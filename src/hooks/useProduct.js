@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/api";
+import { getProductById } from "../services/api";
 
-function useProducts() {
-  const [products, setProducts] = useState([]);
+function useProduct(id) {
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchProduct() {
       try {
         setLoading(true);
-        const data = await getProducts();
-        setProducts(data);
+        const data = await getProductById(id);
+        setProduct(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -19,14 +19,16 @@ function useProducts() {
       }
     }
 
-    fetchProducts();
-  }, []);
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]);
 
   return {
-    products,
+    product,
     loading,
     error,
   };
 }
 
-export default useProducts;
+export default useProduct;

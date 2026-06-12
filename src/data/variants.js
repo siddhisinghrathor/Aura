@@ -1,3 +1,22 @@
-// TODO: Define available product attributes (sizes, colors, materials)
-export const SIZES = [];
-export const COLORS = [];
+export const variants = {
+  colors: [
+    "Lavender",
+    "Rose",
+    "Cream",
+  ],
+
+  sizes: [
+    {
+      value: "S",
+      stock: 10,
+    },
+    {
+      value: "M",
+      stock: 3,
+    },
+    {
+      value: "L",
+      stock: 0,
+    },
+  ],
+};

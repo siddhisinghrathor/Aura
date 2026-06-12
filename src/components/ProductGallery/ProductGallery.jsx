@@ -1,13 +1,39 @@
-import React from 'react';
-import styles from './ProductGallery.module.scss';
+import { useState } from "react";
+import styles from "./ProductGallery.module.scss";
 
-const ProductGallery = () => {
-  // TODO: Implement image carousel/thumbnails and main image view
+function ProductGallery({ image }) {
+  const [activeImage, setActiveImage] =
+    useState(image);
+
+  const galleryImages = [
+    image,
+    image,
+    image,
+    image,
+  ];
+
   return (
     <div className={styles.gallery}>
-      <div>Main Image Placeholder</div>
+      <img
+        src={activeImage}
+        alt=""
+        className={styles.mainImage}
+      />
+
+      <div className={styles.thumbnails}>
+        {galleryImages.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt=""
+            onClick={() =>
+              setActiveImage(img)
+            }
+          />
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default ProductGallery;
