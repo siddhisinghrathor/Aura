@@ -238,10 +238,10 @@
 }
 
 .valueCard {
-  background: $white;
+  background: rgba($primary-coral, 0.06);
   border-radius: 24px;
   padding: 2rem;
-  border: 1px solid rgba($text, 0.04);
+  border: 1px solid rgba($primary-coral, 0.1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
   transition: transform 0.3s ease;
 
@@ -254,7 +254,7 @@
     font-size: 1.15rem;
     font-weight: 600;
     color: $text;
-    margin: 1rem 0 0.5rem 0;
+    margin: 0 0 0.5rem 0;
   }
 
   p {

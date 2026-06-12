@@ -19,6 +19,10 @@ function ProductGallery({ image }) {
             src={activeImage}
             alt="Product details view"
             className={styles.mainImage}
+            loading="eager"
+            decoding="async"
+            width="500"
+            height="550"
           />
         ) : (
           <div className={styles.imagePlaceholder}>Product Image</div>
@@ -34,7 +38,14 @@ function ProductGallery({ image }) {
               className={`${styles.thumbnailButton} ${activeImage === img ? styles.active : ""}`}
               onClick={() => setActiveImage(img)}
             >
-              <img src={img} alt={`Detail view thumbnail ${index + 1}`} />
+              <img
+                src={img}
+                alt={`Detail view thumbnail ${index + 1}`}
+                loading="lazy"
+                decoding="async"
+                width="60"
+                height="60"
+              />
             </button>
           ))}
         </div>

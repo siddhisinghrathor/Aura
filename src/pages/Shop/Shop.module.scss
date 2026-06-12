@@ -1,0 +1,504 @@
+@use '../../styles/variables.scss' as *;
+
+.shopPage {
+  background-color: $bg-color;
+  padding: 3rem 0;
+  min-height: 100vh;
+}
+
+.shopContainer {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+}
+
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: $muted-text;
+  margin-bottom: 2rem;
+
+  span {
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary-coral;
+    }
+  }
+
+  .separator {
+    cursor: default;
+    &:hover {
+      color: $muted-text;
+    }
+  }
+
+  .active {
+    color: $text;
+    font-weight: 500;
+    cursor: default;
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+// Page Header
+.shopHeader {
+  margin-bottom: 3rem;
+
+  .pageTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 600;
+    color: $text;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .subheading {
+    font-size: 1.1rem;
+    color: $muted-text;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+}
+
+// Toolbar
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: $white;
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba($text, 0.03);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+}
+
+.toolbarLeft {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .productCount {
+    font-size: 0.95rem;
+    color: $muted-text;
+  }
+}
+
+.mobileFilterToggle {
+  display: none;
+  background-color: $white;
+  border: 1.5px solid rgba($text, 0.15);
+  color: $text;
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $primary-coral;
+    color: $primary-coral;
+  }
+
+  @media (max-width: 992px) {
+    display: block;
+  }
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+// Search
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .searchIcon {
+    position: absolute;
+    left: 1.25rem;
+    color: $muted-text;
+    pointer-events: none;
+  }
+
+  .searchInput {
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border-radius: 30px;
+    border: 1.5px solid rgba($text, 0.12);
+    font-size: 0.9rem;
+    width: 260px;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:focus {
+      border-color: $primary-coral;
+      box-shadow: 0 0 0 3px rgba($primary-coral, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
+
+// Sort dropdown
+.sortContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  .sortLabel {
+    font-size: 0.9rem;
+    color: $muted-text;
+    white-space: nowrap;
+  }
+
+  .sortSelect {
+    padding: 0.75rem 2rem 0.75rem 1.25rem;
+    border-radius: 30px;
+    border: 1.5px solid rgba($text, 0.12);
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    background-color: $white;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:focus {
+      border-color: $primary-coral;
+    }
+  }
+}
+
+// Main Layout Grid
+.mainLayout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Sidebar Filters
+.sidebar {
+  position: sticky;
+  top: 100px;
+  background-color: $white;
+  border-radius: 24px;
+  padding: 2rem;
+  border: 1px solid rgba($text, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.filterSection {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba($text, 0.06);
+  padding-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.filterSectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: $text;
+  margin-bottom: 1rem;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+// Checkboxes and Radios styling
+.checkboxLabel, .radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: $muted-text;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+
+  input {
+    accent-color: $primary-coral;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: $text;
+  }
+}
+
+.clearRatingLink {
+  background: none;
+  border: none;
+  color: $primary-coral;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 0;
+  width: fit-content;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+.resetAllBtn {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: rgba($primary-coral, 0.08);
+  border: none;
+  border-radius: 30px;
+  color: $primary-coral;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: $primary-coral;
+    color: $white;
+  }
+}
+
+// Content Area & Grid
+.contentArea {
+  min-height: 400px;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Empty State
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem;
+  background-color: $white;
+  border-radius: 24px;
+  border: 1px dashed rgba($text, 0.12);
+
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: $text;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $muted-text;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+  }
+
+  .resetBtn {
+    background-color: $primary-coral;
+    color: $white;
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $primary-dark;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 1.1rem;
+  color: $muted-text;
+  font-family: 'Poppins', sans-serif;
+}
+
+// Mobile Filter Drawer
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobileDrawer {
+  width: 320px;
+  height: 100%;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.drawerHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba($text, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text;
+  }
+
+  .drawerClose {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: $text;
+  }
+}
+
+.drawerContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.drawerFilterSection {
+  h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $text;
+    margin-bottom: 0.85rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.drawerFooter {
+  padding: 1.5rem;
+  border-top: 1px solid rgba($text, 0.06);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1rem;
+
+  .drawerResetBtn {
+    padding: 0.85rem;
+    background-color: rgba($primary-coral, 0.08);
+    border: none;
+    border-radius: 30px;
+    color: $primary-coral;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba($primary-coral, 0.15);
+    }
+  }
+
+  .drawerApplyBtn {
+    padding: 0.85rem;
+    background-color: $primary-coral;
+    border: none;
+    border-radius: 30px;
+    color: $white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+}

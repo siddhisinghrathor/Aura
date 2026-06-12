@@ -24,6 +24,7 @@ function QuantitySelector({
         <button
           type="button"
           onClick={decreaseQuantity}
+          aria-label="Decrease quantity"
         >
           −
         </button>
@@ -33,6 +34,7 @@ function QuantitySelector({
         <button
           type="button"
           onClick={increaseQuantity}
+          aria-label="Increase quantity"
         >
           +
         </button>

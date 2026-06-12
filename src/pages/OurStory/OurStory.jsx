@@ -113,25 +113,25 @@ function OurStory() {
             <h2 className={`${styles.sectionHeading} ${styles.centerText}`}>Our Core Values</h2>
             <div className={styles.valuesGrid}>
               <div className={styles.valueCard}>
-                <div className={styles.valueIcon}>🎨</div>
+                
                 <h3>Thoughtful Design</h3>
                 <p>Crafted specifically to support your body's natural shape and movements.</p>
               </div>
 
               <div className={styles.valueCard}>
-                <div className={styles.valueIcon}>🌿</div>
+              
                 <h3>Safe Materials</h3>
                 <p>Formulated with non-toxic, hypoallergenic, and skin-friendly ingredients.</p>
               </div>
 
               <div className={styles.valueCard}>
-                <div className={styles.valueIcon}>✨</div>
+                
                 <h3>Everyday Comfort</h3>
                 <p>Tested under rigorous conditions to guarantee all-day softness and support.</p>
               </div>
 
               <div className={styles.valueCard}>
-                <div className={styles.valueIcon}>🤝</div>
+                
                 <h3>Community First</h3>
                 <p>Pledging support and wellness access to women in underserved spaces.</p>
               </div>

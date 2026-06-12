@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
 import CategoryShowcase from "../../components/CategoryShowcase/CategoryShowcase";
 import ProductGrid from "../../components/ProductGrid/ProductGrid";
-import LookbookGrid from "../../components/LookbookGrid/LookbookGrid";
-import BrandStory from "../../components/BrandStory/BrandStory";
-import Testimonials from "../../components/Testimonials/Testimonials";
-import Newsletter from "../../components/Newsletter/Newsletter";
-import Footer from "../../components/Footer/Footer";
 import CartDrawer from "../../components/CartDrawer/CartDrawer";
+
+const LookbookGrid = lazy(() => import("../../components/LookbookGrid/LookbookGrid"));
+const BrandStory = lazy(() => import("../../components/BrandStory/BrandStory"));
+const Testimonials = lazy(() => import("../../components/Testimonials/Testimonials"));
+const Newsletter = lazy(() => import("../../components/Newsletter/Newsletter"));
+const Footer = lazy(() => import("../../components/Footer/Footer"));
 
 function Home() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -27,13 +28,18 @@ function Home() {
         <Hero />
         <CategoryShowcase />
         <ProductGrid />
-        <LookbookGrid />
-        <BrandStory />
-        <Testimonials />
-        <Newsletter />
+        
+        <Suspense fallback={<div style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Poppins, sans-serif" }}>Loading details...</div>}>
+          <LookbookGrid />
+          <BrandStory />
+          <Testimonials />
+          <Newsletter />
+        </Suspense>
       </main>
 
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   );
 }

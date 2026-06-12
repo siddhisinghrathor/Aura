@@ -1,7 +1,8 @@
+import React from 'react';
 import styles from "./CartDrawer.module.scss";
 import { useCart } from "../../stores/CartContext";
 
-function CartDrawer({ isOpen, onClose }) {
+const CartDrawer = React.memo(function CartDrawer({ isOpen, onClose }) {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
 
   const subtotal = cartItems.reduce(
@@ -16,10 +17,12 @@ function CartDrawer({ isOpen, onClose }) {
         className={`${styles.drawer} ${
           isOpen ? styles.open : ""
         }`}
+        aria-label="Shopping Cart Drawer"
       >
         <button
           className={styles.closeButton}
           onClick={onClose}
+          aria-label="Close shopping cart"
         >
           ✕
         </button>
@@ -38,10 +41,12 @@ function CartDrawer({ isOpen, onClose }) {
       className={`${styles.drawer} ${
         isOpen ? styles.open : ""
       }`}
+      aria-label="Shopping Cart Drawer"
     >
       <button
         className={styles.closeButton}
         onClick={onClose}
+        aria-label="Close shopping cart"
       >
         ✕
       </button>
@@ -56,11 +61,19 @@ function CartDrawer({ isOpen, onClose }) {
             key={`${item.id}-${item.color}-${item.size}`}
             className={styles.cartItem}
           >
-            <img
-              src={item.image}
-              alt={item.title}
-              className={styles.image}
-            />
+            {item.image ? (
+              <img
+                src={item.image}
+                alt={item.title}
+                className={styles.image}
+                loading="lazy"
+                decoding="async"
+                width="80"
+                height="80"
+              />
+            ) : (
+              <div className={styles.imagePlaceholder} style={{ width: 80, height: 80, background: '#FFF8F5', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#999' }}>No Image</div>
+            )}
 
             <div className={styles.details}>
               <h4>{item.title}</h4>
@@ -70,7 +83,7 @@ function CartDrawer({ isOpen, onClose }) {
               </p>
 
               <p className={styles.price}>
-                ${item.price}
+                ₹{item.price}
               </p>
 
               <div className={styles.quantityControls}>
@@ -86,6 +99,7 @@ function CartDrawer({ isOpen, onClose }) {
                       )
                     )
                   }
+                  aria-label="Decrease quantity"
                 >
                   -
                 </button>
@@ -101,6 +115,7 @@ function CartDrawer({ isOpen, onClose }) {
                       item.quantity + 1
                     )
                   }
+                  aria-label="Increase quantity"
                 >
                   +
                 </button>
@@ -115,6 +130,7 @@ function CartDrawer({ isOpen, onClose }) {
                     item.size
                   )
                 }
+                aria-label={`Remove ${item.title} from cart`}
               >
                 Remove
               </button>
@@ -125,11 +141,11 @@ function CartDrawer({ isOpen, onClose }) {
 
       <div className={styles.summary}>
         <h3>
-          Total: ${subtotal.toFixed(2)}
+          Total: ₹{subtotal.toFixed(2)}
         </h3>
       </div>
     </aside>
   );
-}
+});
 
 export default CartDrawer;

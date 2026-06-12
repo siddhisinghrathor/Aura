@@ -1,6 +1,7 @@
+import React from 'react';
 import styles from "./VariantSelector.module.scss";
 
-function VariantSelector({
+const VariantSelector = React.memo(function VariantSelector({
   colors,
   sizes,
   selectedColor,
@@ -81,6 +82,6 @@ function VariantSelector({
       </div>
     </div>
   );
-}
+});
 
 export default VariantSelector;

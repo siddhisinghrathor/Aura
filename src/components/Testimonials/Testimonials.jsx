@@ -41,7 +41,15 @@ function Testimonials() {
             <p className={styles.text}>"{review.text}"</p>
 
             <div className={styles.profile}>
-              <img src={review.avatar} alt={review.name} className={styles.avatar} />
+              <img
+                src={review.avatar}
+                alt={`Customer avatar of ${review.name}`}
+                className={styles.avatar}
+                loading="lazy"
+                decoding="async"
+                width="60"
+                height="60"
+              />
               <h4 className={styles.name}>{review.name}</h4>
             </div>
           </div>

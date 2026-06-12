@@ -4,9 +4,8 @@ import { useCart } from "../../stores/CartContext";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/#featured" },
+  { label: "Shop", href: "/shop" },
   { label: "Our Story", href: "/our-story" },
-  { label: "Education", href: "/#education" },
 ];
 
 function Navbar({ onCartClick }) {
@@ -38,7 +37,7 @@ function Navbar({ onCartClick }) {
         </nav>
 
         <div className={styles.cartSection}>
-          <button className={styles.cartButton} onClick={onCartClick}>
+          <button className={styles.cartButton} onClick={onCartClick} aria-label="Open shopping cart">
             <svg
               className={styles.cartIcon}
               width="22"

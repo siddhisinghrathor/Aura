@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { useCart } from "../../stores/CartContext";
@@ -9,7 +10,7 @@ const categoryColors = {
   "Self Care": "#F7A38B"
 };
 
-function ProductCard({ product }) {
+const ProductCard = React.memo(function ProductCard({ product }) {
   const { addToCart } = useCart();
 
   const handleAddToCart = (e) => {
@@ -54,6 +55,6 @@ function ProductCard({ product }) {
       </Link>
     </article>
   );
-}
+});
 
 export default ProductCard;

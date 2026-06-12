@@ -1,8 +1,9 @@
+import React from 'react';
 import styles from "./ProductGrid.module.scss";
 import useProducts from "../../hooks/useProducts";
 import ProductCard from "../ProductCard/ProductCard";
 
-function ProductGrid() {
+const ProductGrid = React.memo(function ProductGrid() {
   const { products, loading, error } = useProducts();
 
   if (loading) {
@@ -32,7 +33,7 @@ function ProductGrid() {
       </div>
 
       <div className={styles.grid}>
-        {products.map((product) => (
+        {products.slice(0, 8).map((product) => (
           <ProductCard
             key={product.id}
             product={product}
@@ -41,6 +42,6 @@ function ProductGrid() {
       </div>
     </section>
   );
-}
+});
 
 export default ProductGrid;

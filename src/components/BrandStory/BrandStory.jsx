@@ -33,7 +33,15 @@ function BrandStory() {
         {educationTopics.map((topic, index) => (
           <div key={topic.title} className={styles.row}>
             <div className={styles.imageWrapper}>
-              <img src={topic.image} alt={topic.title} className={styles.image} />
+              <img
+                src={topic.image}
+                alt={topic.title}
+                className={styles.image}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="400"
+              />
             </div>
 
             <div className={styles.content}>
