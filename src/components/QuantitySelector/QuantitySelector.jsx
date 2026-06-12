@@ -5,8 +5,9 @@ function QuantitySelector({
   setQuantity,
 }) {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.selector}>
       <button
+        type="button"
         onClick={() =>
           setQuantity((prev) =>
             Math.max(1, prev - 1)
@@ -19,6 +20,7 @@ function QuantitySelector({
       <span>{quantity}</span>
 
       <button
+        type="button"
         onClick={() =>
           setQuantity((prev) =>
             prev + 1

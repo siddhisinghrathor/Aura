@@ -9,17 +9,20 @@ function VariantSelector({
   onSizeChange,
 }) {
   return (
-    <>
+    <div className={styles.variantSelector}>
+      {/* Color Selection */}
       <div className={styles.section}>
-        <h4>Color</h4>
+        <h4 className={styles.heading}>Color</h4>
 
-        <div className={styles.colors}>
+        <div className={styles.colorContainer}>
           {colors.map((color) => (
             <button
               key={color}
-              onClick={() =>
-                onColorChange(color)
-              }
+              type="button"
+              onClick={() => onColorChange(color)}
+              className={`${styles.colorButton} ${
+                selectedColor === color ? styles.active : ""
+              }`}
             >
               {color}
             </button>
@@ -27,31 +30,56 @@ function VariantSelector({
         </div>
       </div>
 
+      {/* Size Selection */}
       <div className={styles.section}>
-        <h4>Size</h4>
+        <h4 className={styles.heading}>Size</h4>
 
-        <div className={styles.sizes}>
-          {sizes.map((size) => (
-            <button
-              key={size.value}
-              disabled={size.stock === 0}
-              onClick={() =>
-                onSizeChange(size.value)
-              }
-            >
-              {size.value}
+        <div className={styles.sizeContainer}>
+          {sizes.map((size) => {
+            const isSoldOut = size.stock === 0;
+            const isLowStock =
+              size.stock > 0 && size.stock <= 3;
 
-              {size.stock === 0 &&
-                " Sold Out"}
+            return (
+              <button
+                key={size.value}
+                type="button"
+                disabled={isSoldOut}
+                onClick={() => onSizeChange(size.value)}
+                className={`
+                  ${styles.sizeButton}
+                  ${
+                    selectedSize === size.value
+                      ? styles.active
+                      : ""
+                  }
+                  ${
+                    isLowStock
+                      ? styles.lowStock
+                      : ""
+                  }
+                  ${
+                    isSoldOut
+                      ? styles.soldOut
+                      : ""
+                  }
+                `}
+              >
+                <span>{size.value}</span>
 
-              {size.stock > 0 &&
-                size.stock <= 3 &&
-                " Low Stock"}
-            </button>
-          ))}
+                {isLowStock && (
+                  <small>Low Stock</small>
+                )}
+
+                {isSoldOut && (
+                  <small>Sold Out</small>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

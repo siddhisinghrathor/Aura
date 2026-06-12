@@ -1,5 +1,90 @@
-.selector {
-  margin: 1rem 0;
+.variantSelector {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #43304d;
+}
+
+.colorContainer,
+.sizeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.colorButton {
+  padding: 0.75rem 1rem;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  background: white;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.colorButton:hover {
+  border-color: #9e78b5;
+}
+
+.sizeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+
+  min-width: 90px;
+
+  padding: 0.75rem 1rem;
+
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  background: white;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.active {
+  background: #9e78b5;
+  color: white;
+  border-color: #9e78b5;
+}
+
+.lowStock {
+  border-color: #f59e0b;
+}
+
+.lowStock small {
+  color: #f59e0b;
+}
+
+.soldOut {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+.soldOut small {
+  color: #ef4444;
+}
+
+.sizeButton small {
+  font-size: 0.7rem;
+  font-weight: 500;
 }

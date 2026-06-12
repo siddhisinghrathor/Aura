@@ -1,75 +1,101 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import CartDrawer from "../../components/CartDrawer/CartDrawer";
 
 import ProductGallery from "../../components/ProductGallery/ProductGallery";
 import VariantSelector from "../../components/VariantSelector/VariantSelector";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
 
 import useProduct from "../../hooks/useProduct";
-
+import { useCart } from "../../stores/CartContext";
 import { variants } from "../../data/variants";
+import styles from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const { id } = useParams();
+  const { product, loading, error } = useProduct(id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [quantity, setQuantity] = useState(1);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { addToCart } = useCart();
 
-  const {
-    product,
-    loading,
-    error,
-  } = useProduct(id);
-
-  const [selectedColor, setSelectedColor] =
-    useState(variants.colors[0]);
-
-  const [selectedSize, setSelectedSize] =
-    useState("S");
-
-  const [quantity, setQuantity] =
-    useState(1);
+  const selectedColor = searchParams.get("color") || variants.colors[0];
+  const selectedSize = searchParams.get("size") || "S";
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <>
+        <Navbar onCartClick={() => setIsCartOpen(true)} />
+        <p style={{ textAlign: "center", padding: "4rem" }}>Loading product details...</p>
+        <Footer />
+      </>
+    );
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (error || !product) {
+    return (
+      <>
+        <Navbar onCartClick={() => setIsCartOpen(true)} />
+        <p style={{ textAlign: "center", padding: "4rem" }}>Error: {error || "Product not found"}</p>
+        <Footer />
+      </>
+    );
+  }
+
+  function handleColorChange(color) {
+    setSearchParams({
+      color,
+      size: selectedSize,
+    });
+  }
+
+  function handleSizeChange(size) {
+    setSearchParams({
+      color: selectedColor,
+      size,
+    });
+  }
+
+  function handleAddToCart() {
+    addToCart(product, selectedColor, selectedSize, quantity);
+    setIsCartOpen(true); // Open the cart drawer immediately after adding
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar onCartClick={() => setIsCartOpen(true)} />
 
-      <main>
-        <ProductGallery
-          image={product.image}
-        />
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
-        <h1>{product.title}</h1>
+      <main className={styles.page}>
+        <div className={styles.productLayout}>
+          <ProductGallery image={product.image} />
 
-        <p>${product.price}</p>
+          <div className={styles.info}>
+            <span className={styles.category}>{product.category}</span>
+            <h1 className={styles.title}>{product.title}</h1>
+            <p className={styles.price}>${product.price}</p>
+            <p className={styles.description}>{product.description}</p>
 
-        <p>{product.description}</p>
+            <VariantSelector
+              colors={variants.colors}
+              sizes={variants.sizes}
+              selectedColor={selectedColor}
+              selectedSize={selectedSize}
+              onColorChange={handleColorChange}
+              onSizeChange={handleSizeChange}
+            />
 
-        <VariantSelector
-          colors={variants.colors}
-          sizes={variants.sizes}
-          selectedColor={selectedColor}
-          selectedSize={selectedSize}
-          onColorChange={setSelectedColor}
-          onSizeChange={setSelectedSize}
-        />
+            <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
 
-        <QuantitySelector
-          quantity={quantity}
-          setQuantity={setQuantity}
-        />
-
-        <button>
-          Add To Cart
-        </button>
+            <button className={styles.addToCart} onClick={handleAddToCart}>
+              Add To Cart
+            </button>
+          </div>
+        </div>
       </main>
 
       <Footer />

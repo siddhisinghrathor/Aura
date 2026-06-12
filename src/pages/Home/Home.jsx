@@ -1,21 +1,38 @@
-import React from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import Hero from '../../components/Hero/Hero';
-import ProductGrid from '../../components/ProductGrid/ProductGrid';
-import Footer from '../../components/Footer/Footer';
-import styles from './Home.module.scss';
+import { useState } from "react";
 
-const Home = () => {
+import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero/Hero";
+import ProductGrid from "../../components/ProductGrid/ProductGrid";
+import CartDrawer from "../../components/CartDrawer/CartDrawer";
+import Footer from "../../components/Footer/Footer";
+
+function Home() {
+  const [isCartOpen, setIsCartOpen] =
+    useState(false);
+
   return (
-    <div className={styles.home}>
-      <Navbar />
+    <>
+      <Navbar
+        onCartClick={() =>
+          setIsCartOpen(true)
+        }
+      />
+
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() =>
+          setIsCartOpen(false)
+        }
+      />
+
       <main>
         <Hero />
         <ProductGrid />
       </main>
+
       <Footer />
-    </div>
+    </>
   );
-};
+}
 
 export default Home;

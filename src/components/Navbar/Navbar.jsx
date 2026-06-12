@@ -1,4 +1,5 @@
 import styles from "./Navbar.module.scss";
+import { useCart } from "../../stores/CartContext";
 
 const navLinks = [
   "Home",
@@ -7,7 +8,10 @@ const navLinks = [
   "About",
 ];
 
-function Navbar() {
+function Navbar({ onCartClick }) {
+  const { cartItems } = useCart();
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <header className={styles.navbar}>
       <div className={styles.container}>
@@ -27,10 +31,10 @@ function Navbar() {
           ))}
         </nav>
 
-        <button className={styles.cartButton}>
+        <button className={styles.cartButton} onClick={onCartClick}>
           Cart
           <span className={styles.badge}>
-            0
+            {totalItems}
           </span>
         </button>
       </div>
