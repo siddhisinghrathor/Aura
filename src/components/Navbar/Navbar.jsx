@@ -20,20 +20,11 @@ function Navbar({ onCartClick }) {
         </Link>
 
         <nav className={styles.navLinks}>
-          {navLinks.map((link) => {
-            if (link.href.startsWith("/#")) {
-              return (
-                <a key={link.label} href={link.href} className={styles.link}>
-                  {link.label}
-                </a>
-              );
-            }
-            return (
-              <Link key={link.label} to={link.href} className={styles.link}>
-                {link.label}
-              </Link>
-            );
-          })}
+          {navLinks.map((link) => (
+            <Link key={link.label} to={link.href} className={styles.link}>
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className={styles.cartSection}>

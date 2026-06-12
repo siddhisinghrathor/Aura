@@ -13,8 +13,28 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
+          if (
+            id.includes('react-router') ||
+            id.includes('react-router-dom') ||
+            id.includes('@remix-run')
+          ) {
+            return 'router-vendor';
+          }
+          if (
+            id.includes('node_modules/react/') ||
+            id.includes('node_modules/react-dom/') ||
+            id.includes('scheduler')
+          ) {
+            return 'react-vendor';
+          }
+          if (id.includes('src/components/')) {
+            return 'ui-components';
+          }
+          if (
+            id.includes('src/data/') ||
+            id.includes('src/hooks/')
+          ) {
+            return 'product-features';
           }
         }
       }

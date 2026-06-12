@@ -163,7 +163,7 @@ function OurStory() {
             <h2>Join Our Wellness Journey</h2>
             <p>Explore products designed with comfort and care in mind.</p>
             <div className={styles.ctaButtons}>
-              <Link to="/#featured" className={styles.primaryBtn}>Shop Collection</Link>
+              <Link to="/shop" className={styles.primaryBtn}>Shop Collection</Link>
               <Link to="/" className={styles.secondaryBtn}>Learn More</Link>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -15,30 +16,30 @@ const Footer = () => {
         <div className={styles.column}>
           <h3 className={styles.columnTitle}>Shop</h3>
           <ul className={styles.links}>
-            <li><a href="/#featured">Loungewear</a></li>
-            <li><a href="/#featured">Wellness Devices</a></li>
-            <li><a href="/#featured">Self-Care Accessories</a></li>
-            <li><a href="/#featured">Feminine Care</a></li>
+            <li><Link to="/shop">Loungewear</Link></li>
+            <li><Link to="/shop">Wellness Devices</Link></li>
+            <li><Link to="/shop">Self-Care Accessories</Link></li>
+            <li><Link to="/shop">Feminine Care</Link></li>
           </ul>
         </div>
 
         <div className={styles.column}>
           <h3 className={styles.columnTitle}>About</h3>
           <ul className={styles.links}>
-            <li><a href="/#why-choose-us">Our Philosophy</a></li>
-            <li><a href="/#education">Education Journal</a></li>
-            <li><a href="/#why-choose-us">Sustainability</a></li>
-            <li><a href="/#why-choose-us">Careers</a></li>
+            <li><Link to="/our-story">Our Philosophy</Link></li>
+            <li><Link to="/our-story">Education Journal</Link></li>
+            <li><Link to="/our-story">Sustainability</Link></li>
+            <li><Link to="/our-story">Careers</Link></li>
           </ul>
         </div>
 
         <div className={styles.column}>
           <h3 className={styles.columnTitle}>Support</h3>
           <ul className={styles.links}>
-            <li><a href="/">Contact Us</a></li>
-            <li><a href="/">FAQs</a></li>
-            <li><a href="/">Shipping & Returns</a></li>
-            <li><a href="/">Privacy Policy</a></li>
+            <li><Link to="/">Contact Us</Link></li>
+            <li><Link to="/">FAQs</Link></li>
+            <li><Link to="/">Shipping & Returns</Link></li>
+            <li><Link to="/">Privacy Policy</Link></li>
           </ul>
         </div>
       </div>

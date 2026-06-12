@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import CartDrawer from "../../components/CartDrawer/CartDrawer";
 import Footer from "../../components/Footer/Footer";
@@ -103,7 +104,7 @@ function Shop() {
         <div className={styles.shopContainer}>
           {/* Breadcrumb */}
           <nav className={styles.breadcrumb} aria-label="breadcrumb">
-            <span onClick={() => window.location.href = "/"}>Home</span>
+            <Link to="/">Home</Link>
             <span className={styles.separator}>/</span>
             <span className={styles.active}>Shop</span>
           </nav>

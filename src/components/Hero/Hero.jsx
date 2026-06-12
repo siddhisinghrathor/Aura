@@ -1,3 +1,4 @@
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 import styles from "./Hero.module.scss";
 
 function Hero() {
@@ -29,7 +30,7 @@ function Hero() {
           
           <div className={styles.mainImageContainer}>
             <img
-              src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"
+              src={getOptimizedImageUrl("https://images.unsplash.com/photo-1506126613408-eca07ce68773", 800)}
               alt="Comfortable and relaxed woman embracing wellness"
               className={styles.image}
               loading="eager"
