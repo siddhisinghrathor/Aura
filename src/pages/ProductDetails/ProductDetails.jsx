@@ -75,11 +75,31 @@ function ProductDetails() {
           <ProductGallery image={product.image} />
 
           <div className={styles.info}>
-            <span className={styles.category}>{product.category}</span>
-            <h1 className={styles.title}>{product.title}</h1>
-            <p className={styles.price}>${product.price}</p>
-            <p className={styles.description}>{product.description}</p>
+  <span className={styles.category}>
+    {product.category}
+  </span>
 
+  <h1 className={styles.title}>
+    {product.title}
+  </h1>
+
+ <div className={styles.rating}>
+  <span className={styles.star}>
+    ⭐ {product.rating?.rate}
+  </span>
+
+  <span className={styles.reviewCount}>
+    {product.rating?.count} reviews
+  </span>
+</div>
+
+  <p className={styles.price}>
+    ${product.price}
+  </p>
+
+  <p className={styles.description}>
+    {product.description}
+  </p>
             <VariantSelector
               colors={variants.colors}
               sizes={variants.sizes}

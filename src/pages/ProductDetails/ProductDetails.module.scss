@@ -28,6 +28,22 @@
   font-size: 2.5rem;
   line-height: 1.2;
 }
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.star {
+  font-weight: 600;
+  color: #f59e0b;
+}
+
+.reviewCount {
+  color: #777;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
 
 .price {
   font-size: 2rem;

@@ -4,31 +4,39 @@ function QuantitySelector({
   quantity,
   setQuantity,
 }) {
+  const decreaseQuantity = () => {
+    setQuantity((prev) =>
+      Math.max(1, prev - 1)
+    );
+  };
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
   return (
-    <div className={styles.selector}>
-      <button
-        type="button"
-        onClick={() =>
-          setQuantity((prev) =>
-            Math.max(1, prev - 1)
-          )
-        }
-      >
-        -
-      </button>
+    <div className={styles.quantity}>
+      <span className={styles.label}>
+        Quantity
+      </span>
 
-      <span>{quantity}</span>
+      <div className={styles.controls}>
+        <button
+          type="button"
+          onClick={decreaseQuantity}
+        >
+          −
+        </button>
 
-      <button
-        type="button"
-        onClick={() =>
-          setQuantity((prev) =>
-            prev + 1
-          )
-        }
-      >
-        +
-      </button>
+        <span>{quantity}</span>
+
+        <button
+          type="button"
+          onClick={increaseQuantity}
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 }
