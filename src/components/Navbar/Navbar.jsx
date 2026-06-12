@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { useCart } from "../../stores/CartContext";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "#featured" },
-  { label: "Our Story", href: "#why-choose-us" },
-  { label: "Education", href: "#education" },
+  { label: "Shop", href: "/#featured" },
+  { label: "Our Story", href: "/our-story" },
+  { label: "Education", href: "/#education" },
 ];
 
 function Navbar({ onCartClick }) {
@@ -15,16 +16,25 @@ function Navbar({ onCartClick }) {
   return (
     <header className={styles.navbar}>
       <div className={styles.container}>
-        <div className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           Aura
-        </div>
+        </Link>
 
         <nav className={styles.navLinks}>
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className={styles.link}>
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.href.startsWith("/#")) {
+              return (
+                <a key={link.label} href={link.href} className={styles.link}>
+                  {link.label}
+                </a>
+              );
+            }
+            return (
+              <Link key={link.label} to={link.href} className={styles.link}>
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className={styles.cartSection}>

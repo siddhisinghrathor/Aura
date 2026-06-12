@@ -9,35 +9,36 @@ function ProductGallery({ image }) {
     setActiveImage(image);
   }, [image]);
 
-  const galleryImages = [
-    image,
-    image,
-    image,
-    image,
-  ];
+  const galleryImages = image ? [image, image, image, image] : [];
 
   return (
     <div className={styles.gallery}>
       <div className={styles.mainImageContainer}>
-        <img
-          src={activeImage}
-          alt="Product details view"
-          className={styles.mainImage}
-        />
+        {activeImage ? (
+          <img
+            src={activeImage}
+            alt="Product details view"
+            className={styles.mainImage}
+          />
+        ) : (
+          <div className={styles.imagePlaceholder}>Product Image</div>
+        )}
       </div>
 
-      <div className={styles.thumbnails}>
-        {galleryImages.map((img, index) => (
-          <button
-            key={index}
-            type="button"
-            className={`${styles.thumbnailButton} ${activeImage === img ? styles.active : ""}`}
-            onClick={() => setActiveImage(img)}
-          >
-            <img src={img} alt={`Detail view thumbnail ${index + 1}`} />
-          </button>
-        ))}
-      </div>
+      {galleryImages.length > 0 && (
+        <div className={styles.thumbnails}>
+          {galleryImages.map((img, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`${styles.thumbnailButton} ${activeImage === img ? styles.active : ""}`}
+              onClick={() => setActiveImage(img)}
+            >
+              <img src={img} alt={`Detail view thumbnail ${index + 1}`} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

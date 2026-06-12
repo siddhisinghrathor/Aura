@@ -12,13 +12,11 @@ import QuantitySelector from "../../components/QuantitySelector/QuantitySelector
 import useProduct from "../../hooks/useProduct";
 import { useCart } from "../../stores/CartContext";
 import { variants } from "../../data/variants";
-import { mapProductToWellness } from "../../utils/productMapper";
 import styles from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const { id } = useParams();
-  const { product: rawProduct, loading, error } = useProduct(id);
-  const product = mapProductToWellness(rawProduct);
+  const { product, loading, error } = useProduct(id);
   const [searchParams, setSearchParams] = useSearchParams();
   const [quantity, setQuantity] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -91,12 +89,12 @@ function ProductDetails() {
               </span>
 
               <span className={styles.reviewCount}>
-                {product.rating?.count} reviews
+                ({product.rating?.count} reviews)
               </span>
             </div>
 
             <p className={styles.price}>
-              ${product.price}
+              ₹{product.price}
             </p>
 
             <p className={styles.description}>

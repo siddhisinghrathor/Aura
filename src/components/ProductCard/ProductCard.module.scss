@@ -25,27 +25,21 @@
   color: inherit;
 }
 
-.imageContainer {
+.imagePlaceholder {
   position: relative;
   width: 100%;
-  height: 280px; // Defines around 65% of normal card height
+  height: 280px; // Occupies ~65% of typical card height
   background-color: $cream;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
-  overflow: hidden;
-  border: none;
-}
-
-.image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  transition: transform 300ms ease;
+  color: $muted-text;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba($text, 0.02);
 }
 
 .content {
@@ -60,7 +54,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: $primary-coral;
   margin-bottom: 0.6rem;
 }
 

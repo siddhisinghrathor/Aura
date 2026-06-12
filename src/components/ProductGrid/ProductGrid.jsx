@@ -32,7 +32,7 @@ function ProductGrid() {
       </div>
 
       <div className={styles.grid}>
-        {products.slice(0, 8).map((product) => (
+        {products.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
