@@ -4,27 +4,27 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 247, 252, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba($white, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($text, 0.05);
+  transition: all 0.3s ease;
 }
 
 .container {
   max-width: $container;
   margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
+  font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: $accent;
-  letter-spacing: 1px;
+  color: $primary-coral;
+  letter-spacing: -0.5px;
 }
 
 .navLinks {
@@ -35,39 +35,55 @@
 .link {
   color: $text;
   font-size: 0.95rem;
-  transition: 0.3s ease;
+  font-weight: 500;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $primary-coral;
+  }
 }
 
-.link:hover {
-  color: $accent;
+.cartSection {
+  display: flex;
+  align-items: center;
 }
 
 .cartButton {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  position: relative;
+  padding: 0.5rem;
+  transition: color 0.2s ease;
+  color: $text;
 
-  background: $accent;
-  color: white;
+  &:hover {
+    color: $primary-coral;
+  }
+}
 
-  padding: 0.7rem 1rem;
-
-  border-radius: 999px;
+.cartIcon {
+  display: block;
 }
 
 .badge {
-  width: 24px;
-  height: 24px;
-
-  border-radius: 50%;
-
-  background: white;
-  color: $accent;
-
+  position: absolute;
+  top: -2px;
+  right: -2px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: $primary-coral;
+  color: $white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  padding: 0 4px;
+}
 
-  font-size: 0.8rem;
-  font-weight: 700;
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
 }

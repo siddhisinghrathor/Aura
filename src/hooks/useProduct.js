@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProductById } from "../services/api";
+import { wellnessProducts } from "../data/wellnessProducts";
 
 function useProduct(id) {
   const [product, setProduct] = useState(null);
@@ -7,21 +7,16 @@ function useProduct(id) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchProduct() {
-      try {
-        setLoading(true);
-        const data = await getProductById(id);
-        setProduct(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+    setLoading(true);
+    const found = wellnessProducts.find((p) => p.id === id);
+    if (found) {
+      setProduct(found);
+      setError(null);
+    } else {
+      setProduct(null);
+      setError("Product not found");
     }
-
-    if (id) {
-      fetchProduct();
-    }
+    setLoading(false);
   }, [id]);
 
   return {

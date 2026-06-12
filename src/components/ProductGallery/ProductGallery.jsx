@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./ProductGallery.module.scss";
 
 function ProductGallery({ image }) {
-  const [activeImage, setActiveImage] =
-    useState(image);
+  const [activeImage, setActiveImage] = useState(image);
+
+  // Sync state if image prop changes
+  useEffect(() => {
+    setActiveImage(image);
+  }, [image]);
 
   const galleryImages = [
     image,
@@ -14,22 +18,24 @@ function ProductGallery({ image }) {
 
   return (
     <div className={styles.gallery}>
-      <img
-        src={activeImage}
-        alt=""
-        className={styles.mainImage}
-      />
+      <div className={styles.mainImageContainer}>
+        <img
+          src={activeImage}
+          alt="Product details view"
+          className={styles.mainImage}
+        />
+      </div>
 
       <div className={styles.thumbnails}>
         {galleryImages.map((img, index) => (
-          <img
+          <button
             key={index}
-            src={img}
-            alt=""
-            onClick={() =>
-              setActiveImage(img)
-            }
-          />
+            type="button"
+            className={`${styles.thumbnailButton} ${activeImage === img ? styles.active : ""}`}
+            onClick={() => setActiveImage(img)}
+          >
+            <img src={img} alt={`Detail view thumbnail ${index + 1}`} />
+          </button>
         ))}
       </div>
     </div>

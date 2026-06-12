@@ -1,41 +1,47 @@
+@use '../../styles/variables.scss' as *;
+
 .quantity {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
   font-weight: 600;
+  color: $text;
 }
 
 .controls {
   display: flex;
   align-items: center;
   width: fit-content;
-
-  border: 1px solid #ddd;
-  border-radius: 12px;
-
+  border: 1px solid rgba($text, 0.12);
+  border-radius: 50px;
   overflow: hidden;
+  background: $white;
 }
 
 .controls button {
   width: 48px;
-  height: 48px;
-
-  background: white;
-
+  height: 44px;
+  background: transparent;
   border: none;
-
   cursor: pointer;
-
   font-size: 1.25rem;
+  color: $text;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba($primary-coral, 0.05);
+    color: $primary-coral;
+  }
 }
 
 .controls span {
-  width: 60px;
-
+  width: 48px;
   text-align: center;
-
   font-weight: 600;
+  color: $text;
 }

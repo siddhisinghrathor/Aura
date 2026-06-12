@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/api";
+import { wellnessProducts } from "../data/wellnessProducts";
 
 function useProducts() {
   const [products, setProducts] = useState([]);
@@ -7,19 +7,9 @@ function useProducts() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        setLoading(true);
-        const data = await getProducts();
-        setProducts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
+    setLoading(true);
+    setProducts(wellnessProducts);
+    setLoading(false);
   }, []);
 
   return {

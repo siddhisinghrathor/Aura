@@ -12,7 +12,8 @@
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
 }
 
 .tagline {
@@ -33,48 +34,55 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
 }
 
 .card {
-  background: $white;
-  padding: 2.5rem 2rem;
+  background: $cream;
+  padding: 2.5rem;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
-  border: 1px solid rgba($text, 0.03);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  border: 1px solid rgba($primary-coral, 0.05);
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
   }
 }
 
-.iconWrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
+.stars {
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: $muted-text;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.profile {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
 }
 
-.cardTitle {
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   color: $text;
-  margin-bottom: 0.75rem;
-}
-
-.cardDesc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: $muted-text;
 }

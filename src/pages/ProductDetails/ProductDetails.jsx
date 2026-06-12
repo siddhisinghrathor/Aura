@@ -12,11 +12,13 @@ import QuantitySelector from "../../components/QuantitySelector/QuantitySelector
 import useProduct from "../../hooks/useProduct";
 import { useCart } from "../../stores/CartContext";
 import { variants } from "../../data/variants";
+import { mapProductToWellness } from "../../utils/productMapper";
 import styles from "./ProductDetails.module.scss";
 
 function ProductDetails() {
   const { id } = useParams();
-  const { product, loading, error } = useProduct(id);
+  const { product: rawProduct, loading, error } = useProduct(id);
+  const product = mapProductToWellness(rawProduct);
   const [searchParams, setSearchParams] = useSearchParams();
   const [quantity, setQuantity] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -75,31 +77,32 @@ function ProductDetails() {
           <ProductGallery image={product.image} />
 
           <div className={styles.info}>
-  <span className={styles.category}>
-    {product.category}
-  </span>
+            <span className={styles.category}>
+              {product.category}
+            </span>
 
-  <h1 className={styles.title}>
-    {product.title}
-  </h1>
+            <h1 className={styles.title}>
+              {product.title}
+            </h1>
 
- <div className={styles.rating}>
-  <span className={styles.star}>
-    ⭐ {product.rating?.rate}
-  </span>
+            <div className={styles.rating}>
+              <span className={styles.star}>
+                ⭐ {product.rating?.rate}
+              </span>
 
-  <span className={styles.reviewCount}>
-    {product.rating?.count} reviews
-  </span>
-</div>
+              <span className={styles.reviewCount}>
+                {product.rating?.count} reviews
+              </span>
+            </div>
 
-  <p className={styles.price}>
-    ${product.price}
-  </p>
+            <p className={styles.price}>
+              ${product.price}
+            </p>
 
-  <p className={styles.description}>
-    {product.description}
-  </p>
+            <p className={styles.description}>
+              {product.description}
+            </p>
+            
             <VariantSelector
               colors={variants.colors}
               sizes={variants.sizes}
