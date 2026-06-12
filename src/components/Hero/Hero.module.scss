@@ -1,0 +1,8 @@
+@use '../../styles/variables.scss' as *;
+@use '../../styles/mixins.scss' as *;
+
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: $color-secondary;
+}
