@@ -14,8 +14,6 @@
 }
 
 // Global section styles
-.heroSection,
-.missionSection,
 .valuesSection,
 .ctaSection {
   padding: 6rem 2rem;
@@ -61,6 +59,14 @@
 .heroSection {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: none;
+  padding: 6rem 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
 }
 
 .bgDecoration {
@@ -81,6 +87,9 @@
 
 // Section 1: Hero
 .heroContainer {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 4rem;
@@ -133,10 +142,21 @@
 .missionSection {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: none;
+  padding: 6rem 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
 }
 
 // Section 2: Our Mission
 .missionContainer {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 4rem;

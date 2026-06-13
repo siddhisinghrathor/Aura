@@ -25,28 +25,28 @@ function OurStory() {
               {/* Left to Right Wave 1 */}
               <path
                 d="M-100,200 C300,380 600,80 900,280 C1200,480 1400,280 1600,180"
-                stroke="rgba(241, 91, 86, 0.35)"
+                stroke="rgba(241, 91, 86, 0.10)"
                 strokeWidth="12"
                 strokeLinecap="round"
               />
               {/* Left to Right Wave 2 */}
               <path
                 d="M-100,250 C350,450 700,100 1000,320 C1300,540 1450,320 1650,220"
-                stroke="rgba(241, 91, 86, 0.25)"
+                stroke="rgba(241, 91, 86, 0.06)"
                 strokeWidth="8"
                 strokeLinecap="round"
               />
               {/* Right to Left Wave 3 */}
               <path
                 d="M1600,100 C1200,300 900,80 600,320 C300,520 100,320 -200,200"
-                stroke="rgba(241, 91, 86, 0.22)"
+                stroke="rgba(241, 91, 86, 0.07)"
                 strokeWidth="10"
                 strokeLinecap="round"
               />
               {/* Diagonal Cross Wave 4 */}
               <path
                 d="M-100,400 C400,150 700,480 1100,180 C1300,50 1500,250 1600,350"
-                stroke="rgba(241, 91, 86, 0.16)"
+                stroke="rgba(241, 91, 86, 0.04)"
                 strokeWidth="8"
                 strokeLinecap="round"
               />
@@ -79,28 +79,28 @@ function OurStory() {
               {/* Left to Right Wave 1 */}
               <path
                 d="M-100,150 C300,330 600,30 900,230 C1200,430 1400,230 1600,130"
-                stroke="rgba(241, 91, 86, 0.35)"
+                stroke="rgba(241, 91, 86, 0.10)"
                 strokeWidth="12"
                 strokeLinecap="round"
               />
               {/* Left to Right Wave 2 */}
               <path
                 d="M-100,200 C350,400 700,50 1000,270 C1300,490 1450,270 1650,170"
-                stroke="rgba(241, 91, 86, 0.25)"
+                stroke="rgba(241, 91, 86, 0.06)"
                 strokeWidth="8"
                 strokeLinecap="round"
               />
               {/* Right to Left Wave 3 */}
               <path
                 d="M1600,50 C1200,250 900,30 600,270 C300,470 100,270 -200,150"
-                stroke="rgba(241, 91, 86, 0.22)"
+                stroke="rgba(241, 91, 86, 0.07)"
                 strokeWidth="10"
                 strokeLinecap="round"
               />
               {/* Diagonal Cross Wave 4 */}
               <path
                 d="M-100,350 C400,100 700,430 1100,130 C1300,0 1500,200 1600,300"
-                stroke="rgba(241, 91, 86, 0.16)"
+                stroke="rgba(241, 91, 86, 0.04)"
                 strokeWidth="8"
                 strokeLinecap="round"
               />
