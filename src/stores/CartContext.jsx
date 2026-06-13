@@ -1,11 +1,27 @@
-import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 
 const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('aura_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      console.error('Failed to parse cart items from localStorage', e);
+      return [];
+    }
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('aura_cart', JSON.stringify(cartItems));
+    } catch (e) {
+      console.error('Failed to save cart items to localStorage', e);
+    }
+  }, [cartItems]);
 
   const removeToast = useCallback((id) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
