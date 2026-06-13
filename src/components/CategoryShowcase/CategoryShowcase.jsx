@@ -49,24 +49,40 @@ const benefits = [
 function CategoryShowcase() {
   return (
     <section className={styles.section}>
-      <div className={styles.header}>
-        <span className={styles.tagline}>designed with care</span>
-        <h2 className={styles.heading}>Why Women Trust Us</h2>
+      {/* Top Wave */}
+      <div className={styles.waveTop}>
+        <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none">
+          <path d="M0,60 L0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,60 Z" />
+        </svg>
       </div>
 
-      <div className={styles.grid}>
-        {benefits.map((benefit) => (
-          <div key={benefit.title} className={styles.card}>
-            <div
-              className={styles.iconWrapper}
-              style={{ backgroundColor: benefit.color === "#FFF8F5" ? "#FAD3CF" : `${benefit.color}20`, color: benefit.color === "#FFF8F5" ? "#F15B56" : benefit.color }}
-            >
-              {benefit.icon}
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <span className={styles.tagline}>designed with care</span>
+          <h2 className={styles.heading}>Why Women Trust Us</h2>
+        </div>
+
+        <div className={styles.grid}>
+          {benefits.map((benefit) => (
+            <div key={benefit.title} className={styles.card}>
+              <div
+                className={styles.iconWrapper}
+                style={{ backgroundColor: benefit.color === "#FFF8F5" ? "#FAD3CF" : `${benefit.color}20`, color: benefit.color === "#FFF8F5" ? "#F15B56" : benefit.color }}
+              >
+                {benefit.icon}
+              </div>
+              <h3 className={styles.cardTitle}>{benefit.title}</h3>
+              <p className={benefit.color === "#FFF8F5" ? styles.cardDesc : styles.cardDesc}>{benefit.desc}</p>
             </div>
-            <h3 className={styles.cardTitle}>{benefit.title}</h3>
-            <p className={styles.cardDesc}>{benefit.desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Wave */}
+      <div className={styles.waveBottom}>
+        <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none">
+          <path d="M0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,0 L0,0 Z" />
+        </svg>
       </div>
     </section>
   );

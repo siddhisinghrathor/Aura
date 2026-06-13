@@ -6,19 +6,19 @@ const educationTopics = [
     title: "Understanding Comfort & Care",
     tagline: "wellness philosophy",
     desc: "Every body is unique. Learning how to care for your skin with clean, breathable materials is the first step toward a healthier self-care routine. Our products are designed to breathe with your skin and prevent irritation.",
-    image: getOptimizedImageUrl("https://images.unsplash.com/photo-1544367567-0f2fcb009e0b", 600)
+    image: getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351625/Poster_advertisement_for_PFA_free_period_underwear_teroe1.jpg", 600)
   },
   {
     title: "Why Quality Materials Matter",
     tagline: "ingredient check",
     desc: "Synthetic fibers trap heat and moisture, leading to skin rashes and discomfort. We use premium long-staple organic cotton and sustainable bamboo viscose that are naturally hypoallergenic and soft on sensitive skin.",
-    image: getOptimizedImageUrl("https://images.unsplash.com/photo-1512290923902-8a9f81dc236c", 600)
+    image: getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351623/Soft_on_your_skin_strong_in_comfort__%EF%B8%8F_The_Bloom_brand_panty_set_designed_for_effortless_wear.__._.__jtzvks.jpg", 600)
   },
   {
     title: "Choosing the Right Support",
     tagline: "daily routines",
     desc: "Whether you need light, flexible activewear for yoga, or secure leak-proof lounge options for restful sleep, matching the product fit to your natural routine keeps you feeling comfortable all day.",
-    image: getOptimizedImageUrl("https://images.unsplash.com/photo-1506126613408-eca07ce68773", 600)
+    image: getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351625/download_uaf38p.jpg", 600)
   }
 ];
 

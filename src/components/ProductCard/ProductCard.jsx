@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.scss";
 import { useCart } from "../../stores/CartContext";
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
 const categoryColors = {
   "Period Care": "#F15B56",
@@ -27,7 +28,16 @@ const ProductCard = React.memo(function ProductCard({ product }) {
     <article className={styles.card}>
       <Link to={`/product/${product.id}`} className={styles.linkWrapper}>
         <div className={styles.imagePlaceholder}>
-          Product Image
+          {product.image ? (
+            <img
+              src={getOptimizedImageUrl(product.image, 400)}
+              alt={product.title}
+              className={styles.productImage}
+              loading="lazy"
+            />
+          ) : (
+            "Product Image"
+          )}
         </div>
 
         <div className={styles.content}>

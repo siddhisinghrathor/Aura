@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import CartDrawer from "../../components/CartDrawer/CartDrawer";
 import Footer from "../../components/Footer/Footer";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import useProducts from "../../hooks/useProducts";
@@ -9,7 +8,6 @@ import styles from "./Shop.module.scss";
 
 function Shop() {
   const { products, loading, error } = useProducts();
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [minRating, setMinRating] = useState(0);
@@ -97,25 +95,28 @@ function Shop() {
 
   return (
     <>
-      <Navbar onCartClick={() => setIsCartOpen(true)} />
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Navbar />
 
       <main className={styles.shopPage}>
         <div className={styles.shopContainer}>
-          {/* Breadcrumb */}
-          <nav className={styles.breadcrumb} aria-label="breadcrumb">
-            <Link to="/">Home</Link>
-            <span className={styles.separator}>/</span>
-            <span className={styles.active}>Shop</span>
-          </nav>
-
-          {/* Page Header */}
-          <header className={styles.shopHeader}>
-            <h1 className={styles.pageTitle}>Women's Wellness Essentials</h1>
-            <p className={styles.subheading}>
-              Explore safe, comfortable and thoughtfully designed products for everyday care.
-            </p>
-          </header>
+          {/* Back Button */}
+          <Link to="/" className={styles.backButton} aria-label="Go back to home page">
+            <svg
+              className={styles.backIcon}
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Home</span>
+          </Link>
 
           {/* Top Toolbar */}
           <section className={styles.toolbar}>

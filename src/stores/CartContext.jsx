@@ -4,6 +4,20 @@ const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [toasts, setToasts] = useState([]);
+
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
+  const addToast = useCallback((message) => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message }]);
+    setTimeout(() => {
+      removeToast(id);
+    }, 3000);
+  }, [removeToast]);
 
   const addToCart = useCallback((product, color, size, quantity = 1) => {
     setCartItems((prev) => {
@@ -19,7 +33,11 @@ export const CartProvider = ({ children }) => {
       }
       return [...prev, { ...product, color, size, quantity }];
     });
-  }, []);
+    
+    // Instantly open the cart drawer and trigger the toast notification
+    setIsCartOpen(true);
+    addToast(`${product.title} added to your cart.`);
+  }, [addToast]);
 
   const removeFromCart = useCallback((id, color, size) => {
     setCartItems((prev) =>
@@ -40,10 +58,15 @@ export const CartProvider = ({ children }) => {
 
   const contextValue = useMemo(() => ({
     cartItems,
+    isCartOpen,
+    setIsCartOpen,
+    toasts,
+    addToast,
+    removeToast,
     addToCart,
     removeFromCart,
     updateQuantity
-  }), [cartItems, addToCart, removeFromCart, updateQuantity]);
+  }), [cartItems, isCartOpen, toasts, addToast, removeToast, addToCart, removeFromCart, updateQuantity]);
 
   return (
     <CartContext.Provider value={contextValue}>

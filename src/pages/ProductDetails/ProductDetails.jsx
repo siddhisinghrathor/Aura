@@ -3,7 +3,6 @@ import { useParams, useSearchParams } from "react-router-dom";
 
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import CartDrawer from "../../components/CartDrawer/CartDrawer";
 
 import ProductGallery from "../../components/ProductGallery/ProductGallery";
 import VariantSelector from "../../components/VariantSelector/VariantSelector";
@@ -19,7 +18,6 @@ function ProductDetails() {
   const { product, loading, error } = useProduct(id);
   const [searchParams, setSearchParams] = useSearchParams();
   const [quantity, setQuantity] = useState(1);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const { addToCart } = useCart();
 
   const selectedColor = searchParams.get("color") || variants.colors[0];
@@ -28,7 +26,7 @@ function ProductDetails() {
   if (loading) {
     return (
       <>
-        <Navbar onCartClick={() => setIsCartOpen(true)} />
+        <Navbar />
         <p style={{ textAlign: "center", padding: "4rem" }}>Loading product details...</p>
         <Footer />
       </>
@@ -38,7 +36,7 @@ function ProductDetails() {
   if (error || !product) {
     return (
       <>
-        <Navbar onCartClick={() => setIsCartOpen(true)} />
+        <Navbar />
         <p style={{ textAlign: "center", padding: "4rem" }}>Error: {error || "Product not found"}</p>
         <Footer />
       </>
@@ -61,14 +59,11 @@ function ProductDetails() {
 
   function handleAddToCart() {
     addToCart(product, selectedColor, selectedSize, quantity);
-    setIsCartOpen(true); // Open the cart drawer immediately after adding
   }
 
   return (
     <>
-      <Navbar onCartClick={() => setIsCartOpen(true)} />
-
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Navbar />
 
       <main className={styles.page}>
         <div className={styles.productLayout}>

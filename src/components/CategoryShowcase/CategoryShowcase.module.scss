@@ -1,12 +1,64 @@
 @use '../../styles/variables.scss' as *;
 
 .section {
-  max-width: $container;
-  margin: 6rem auto;
-  padding: 0 2rem;
+  position: relative;
+  width: 100%;
+  background-color: $primary-coral;
+  padding: 6rem 0;
+  margin: 10rem 0;
+  color: $white;
 
   @media (max-width: 768px) {
-    margin: 4rem auto;
+    margin: 8rem 0;
+    padding: 4rem 0;
+  }
+}
+
+.container {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.waveTop {
+  position: absolute;
+  top: -59px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  line-height: 0;
+  
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+  }
+  
+  path {
+    fill: $primary-coral;
+  }
+}
+
+.waveBottom {
+  position: absolute;
+  bottom: -59px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  line-height: 0;
+  
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+  }
+  
+  path {
+    fill: $primary-coral;
   }
 }
 
@@ -20,7 +72,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: $primary-coral;
+  color: rgba($white, 0.9);
 }
 
 .heading {
@@ -28,7 +80,7 @@
   font-size: 2.5rem;
   font-weight: 600;
   margin-top: 0.5rem;
-  color: $text;
+  color: $white;
 }
 
 .grid {
@@ -40,18 +92,18 @@
 .card {
   background: $white;
   padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-radius: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba($text, 0.03);
+  border: 1px solid rgba($white, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
   }
 }
 

@@ -26,10 +26,8 @@ const ProductGrid = React.memo(function ProductGrid() {
     <section className={styles.section} id="featured">
       <div className={styles.header}>
         <span className={styles.tagline}>our wellness collections</span>
-        <h2 className={styles.heading}>Thoughtfully Designed For You</h2>
-        <p className={styles.subtext}>
-          Explore clean, safe, and toxin-free formulations built to support your daily routines.
-        </p>
+       
+
       </div>
 
       <div className={styles.grid}>

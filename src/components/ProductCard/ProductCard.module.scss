@@ -40,6 +40,13 @@
   font-size: 0.95rem;
   font-weight: 500;
   border-bottom: 1px solid rgba($text, 0.02);
+
+  .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 .content {

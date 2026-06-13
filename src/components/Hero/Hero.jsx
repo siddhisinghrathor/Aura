@@ -14,14 +14,7 @@ function Hero() {
           <p className={styles.description}>
             Thoughtfully designed products for modern women who deserve better care. Our clean, safe, and comfortable formulations help you embrace your natural wellness cycle with confidence.
           </p>
-          <div className={styles.actions}>
-            <a href="#featured" className={styles.primaryBtn}>
-              Shop Collection
-            </a>
-            <a href="#why-choose-us" className={styles.secondaryBtn}>
-              Learn More
-            </a>
-          </div>
+
         </div>
 
         <div className={styles.imageWrapper}>
@@ -30,7 +23,7 @@ function Hero() {
           
           <div className={styles.mainImageContainer}>
             <img
-              src={getOptimizedImageUrl("https://images.unsplash.com/photo-1506126613408-eca07ce68773", 800)}
+              src={getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351624/Dreamlike_Fashion_Editorial_Cloud_Concept_Visual_zpcjbw.jpg", 800)}
               alt="Comfortable and relaxed woman embracing wellness"
               className={styles.image}
               loading="eager"

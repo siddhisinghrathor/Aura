@@ -9,8 +9,10 @@ const navLinks = [
 ];
 
 function Navbar({ onCartClick }) {
-  const { cartItems } = useCart();
+  const { cartItems, setIsCartOpen } = useCart();
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  const handleCartClick = onCartClick || (() => setIsCartOpen(true));
 
   return (
     <header className={styles.navbar}>
@@ -28,7 +30,7 @@ function Navbar({ onCartClick }) {
         </nav>
 
         <div className={styles.cartSection}>
-          <button className={styles.cartButton} onClick={onCartClick} aria-label="Open shopping cart">
+          <button className={styles.cartButton} onClick={handleCartClick} aria-label="Open shopping cart">
             <svg
               className={styles.cartIcon}
               width="22"

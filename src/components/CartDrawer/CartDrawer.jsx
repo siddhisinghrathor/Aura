@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./CartDrawer.module.scss";
 import { useCart } from "../../stores/CartContext";
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
 const CartDrawer = React.memo(function CartDrawer({ isOpen, onClose }) {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
@@ -63,7 +64,7 @@ const CartDrawer = React.memo(function CartDrawer({ isOpen, onClose }) {
           >
             {item.image ? (
               <img
-                src={item.image}
+                src={getOptimizedImageUrl(item.image, 160)}
                 alt={item.title}
                 className={styles.image}
                 loading="lazy"

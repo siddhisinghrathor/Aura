@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import CartDrawer from "../../components/CartDrawer/CartDrawer";
 import { Link } from "react-router-dom";
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 import styles from "./OurStory.module.scss";
 
 function OurStory() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -15,12 +14,45 @@ function OurStory() {
 
   return (
     <>
-      <Navbar onCartClick={() => setIsCartOpen(true)} />
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <Navbar />
 
       <main className={`${styles.page} ${visible ? styles.fadeIn : ""}`}>
         {/* Section 1: Hero */}
         <section className={styles.heroSection}>
+          {/* Decorative Background Wavy Lines */}
+          <div className={styles.bgDecoration}>
+            <svg viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Left to Right Wave 1 */}
+              <path
+                d="M-100,200 C300,380 600,80 900,280 C1200,480 1400,280 1600,180"
+                stroke="rgba(241, 91, 86, 0.35)"
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+              {/* Left to Right Wave 2 */}
+              <path
+                d="M-100,250 C350,450 700,100 1000,320 C1300,540 1450,320 1650,220"
+                stroke="rgba(241, 91, 86, 0.25)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              {/* Right to Left Wave 3 */}
+              <path
+                d="M1600,100 C1200,300 900,80 600,320 C300,520 100,320 -200,200"
+                stroke="rgba(241, 91, 86, 0.22)"
+                strokeWidth="10"
+                strokeLinecap="round"
+              />
+              {/* Diagonal Cross Wave 4 */}
+              <path
+                d="M-100,400 C400,150 700,480 1100,180 C1300,50 1500,250 1600,350"
+                stroke="rgba(241, 91, 86, 0.16)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
           <div className={styles.heroContainer}>
             <div className={styles.heroText}>
               <h1 className={styles.heroTitle}>Care That Understands You</h1>
@@ -29,20 +61,60 @@ function OurStory() {
               </p>
             </div>
             <div className={styles.heroImageContainer}>
-              <div className={styles.imagePlaceholder}>
-                Lifestyle Image
-              </div>
+              <img
+                src={getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351623/Soft_on_your_skin_strong_in_comfort__%EF%B8%8F_The_Bloom_brand_panty_set_designed_for_effortless_wear.__._.__jtzvks.jpg", 600)}
+                alt="Care That Understands You"
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </div>
         </section>
 
         {/* Section 2: Our Mission */}
         <section className={styles.missionSection}>
+          {/* Decorative Background Wavy Lines */}
+          <div className={styles.bgDecoration}>
+            <svg viewBox="0 0 1440 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Left to Right Wave 1 */}
+              <path
+                d="M-100,150 C300,330 600,30 900,230 C1200,430 1400,230 1600,130"
+                stroke="rgba(241, 91, 86, 0.35)"
+                strokeWidth="12"
+                strokeLinecap="round"
+              />
+              {/* Left to Right Wave 2 */}
+              <path
+                d="M-100,200 C350,400 700,50 1000,270 C1300,490 1450,270 1650,170"
+                stroke="rgba(241, 91, 86, 0.25)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+              {/* Right to Left Wave 3 */}
+              <path
+                d="M1600,50 C1200,250 900,30 600,270 C300,470 100,270 -200,150"
+                stroke="rgba(241, 91, 86, 0.22)"
+                strokeWidth="10"
+                strokeLinecap="round"
+              />
+              {/* Diagonal Cross Wave 4 */}
+              <path
+                d="M-100,350 C400,100 700,430 1100,130 C1300,0 1500,200 1600,300"
+                stroke="rgba(241, 91, 86, 0.16)"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
           <div className={styles.missionContainer}>
             <div className={styles.missionImageContainer}>
-              <div className={styles.imagePlaceholder}>
-                Mission Image
-              </div>
+              <img
+                src={getOptimizedImageUrl("https://res.cloudinary.com/droqu4yo5/image/upload/q_auto/f_auto/v1781351625/Mid_Year_Sale_Is_Here_irqwj7.jpg", 600)}
+                alt="Our Mission"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className={styles.missionText}>
               <h2 className={styles.sectionHeading}>Our Mission</h2>
@@ -66,6 +138,13 @@ function OurStory() {
 
         {/* Section 3: Why We Started */}
         <section className={styles.whySection}>
+          {/* Top Wave */}
+          <div className={styles.waveTop}>
+            <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none">
+              <path d="M0,60 L0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,60 Z" />
+            </svg>
+          </div>
+
           <div className={styles.whyContainer}>
             <h2 className={`${styles.sectionHeading} ${styles.centerText}`}>Why We Started</h2>
             <p className={styles.whyParagraph}>
@@ -104,6 +183,13 @@ function OurStory() {
                 <p>Empowering support that lets you face every moment of your day with assurance.</p>
               </div>
             </div>
+          </div>
+
+          {/* Bottom Wave */}
+          <div className={styles.waveBottom}>
+            <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none">
+              <path d="M0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 L1440,0 L0,0 Z" />
+            </svg>
           </div>
         </section>
 

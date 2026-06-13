@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./ProductGallery.module.scss";
+import { getOptimizedImageUrl } from "../../utils/cloudinary";
 
 function ProductGallery({ image }) {
   const [activeImage, setActiveImage] = useState(image);
@@ -16,7 +17,7 @@ function ProductGallery({ image }) {
       <div className={styles.mainImageContainer}>
         {activeImage ? (
           <img
-            src={activeImage}
+            src={getOptimizedImageUrl(activeImage, 600)}
             alt="Product details view"
             className={styles.mainImage}
             loading="eager"
@@ -39,7 +40,7 @@ function ProductGallery({ image }) {
               onClick={() => setActiveImage(img)}
             >
               <img
-                src={img}
+                src={getOptimizedImageUrl(img, 100)}
                 alt={`Detail view thumbnail ${index + 1}`}
                 loading="lazy"
                 decoding="async"
