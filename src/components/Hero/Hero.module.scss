@@ -11,6 +11,22 @@
   }
 }
 
+.bgDecoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 .container {
   max-width: $container;
   margin: 0 auto;
@@ -18,6 +34,8 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 4rem;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
